@@ -1,0 +1,3 @@
+path = shell.path()
+path = path..":/disk/lib/:/lib/"
+shell.setPath(path)
