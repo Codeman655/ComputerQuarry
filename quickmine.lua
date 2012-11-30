@@ -5,6 +5,7 @@ if path==nil or not os.loadAPI(path) then
 end
 
 --save starting coordinate
+gps.locate()
 coord=_move.readCoord()
 home_x, home_y, home_z, orientation = coord[1],coord[2],coord[3],coord[4]
 
