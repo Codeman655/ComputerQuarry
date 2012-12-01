@@ -67,51 +67,54 @@ function whereami()
 end
 
 function spinRight(orientation)
+  coord=_move.readCoord()
+  orientation = coord[4]
   orientation = orientation - 1
   orientation = (orientation + 1) % 4
   orientation = orientation + 1
+  coord[4] = orientation
   turtle.turnRight()
-  return(orientation)
+  --writeCoord(coord)
+  --whereami()
 end
 
-function spinLeft(orientation)
+function spinLeft()
+  coord=_move.readCoord()
+  orientation = coord[4]
   orientation = orientation - 1
   orientation = (orientation - 1) % 4
   orientation = orientation + 1
   turtle.turnLeft()
-  return(orientation)
+  coord[4] = orientation
+  turtle.turnRight()
   --writeCoord(coord)
   --whereami()
 end
 
 --Zoolander Functions :0
-function faceNorth(orientation)
+function faceNorth()
  while orientation~=1 do
-	  orientation = spinRight(orientation)
+	  spinRight()
  end
- return(orientation)
 end
-function faceEast(orientation) 
+function faceEast() 
  while orientation~=2 do
-	  orientation = spinRight(orientation)
+	  spinRight()
  end
- return(orientation)
 end
-function faceSouth(orientation) 
+function faceSouth() 
  while orientation~=3 do
-	  spinRight(orientation)
+	  spinRight()
  end
- return(orientation)
 end
-function faceWest(orientation) 
+function faceWest() 
  while orientation~=4 do
-	  spinRight(orientation)
+	  spinRight()
  end
- return(orientation)
 end
 
 function moveForward(num)
-  --coord = readCoord()
+  coord = readCoord()
   moved = false
   for i=1,num do
   if turtle.detect() == true then
@@ -121,8 +124,8 @@ function moveForward(num)
 	if moved == false then
 		  i = i-1
     else
-   --   coord[1] = coord[1] + xDiff[orientation]
-   --  coord[3] = coord[3] + zDiff[orientation]
+      coord[1] = coord[1] + xDiff[orientation]
+      coord[3] = coord[3] + zDiff[orientation]
       --whereami()
     end
   end
@@ -130,19 +133,19 @@ function moveForward(num)
 end
 
 function moveBack(num)
-  --coord = readCoord()
+  coord = readCoord()
   moved = false
    for i=1,num do
     moved = turtle.back()
-   --   coord[1] = coord[1] + (xDiff[orientation] * -1)
-   --   coord[3] = coord[3] + (zDiff[orientation] * -1)
+      coord[1] = coord[1] + (xDiff[orientation] * -1)
+      coord[3] = coord[3] + (zDiff[orientation] * -1)
     --whereami()
   end
   --writeCoord(coord)
 end
 
 function moveUp(num)
-  --coord = readCoord()
+  coord = readCoord()
   moved = false
   for i=1,num do
     if turtle.detectUp() == true then
@@ -152,8 +155,7 @@ function moveUp(num)
     if moved == false then
       i = i -1
     else
-      --print("moved")
-      --   coord[2] = coord[2] + 1
+      coord[2] = coord[2] + 1
       --writeCoord(coord)
       --whereami()
     end
@@ -161,7 +163,7 @@ function moveUp(num)
 end
 
 function moveDown(num)
-  --coord = readCoord()
+  coord = readCoord()
   moved = false
   for i=1,num do
     if turtle.detectDown() == true then
@@ -171,19 +173,18 @@ function moveDown(num)
     if moved == false then
       i = i -1
     else
-      --coord[2] = coord[2] - 1
+      coord[2] = coord[2] - 1
       --whereami()
     end
   end
   --writeCoord(coord)
 end
 
-function descend()
-  while not turtle.detectDown() do
+function decend()
+  while not turtle.detect() do
     turtle.down()
-    --coord[2] = coord[2] - 1
+    coord[2] = coord[2] - 1
   end
-  print("laneded")
   --writeCoord(coord)
 end
 

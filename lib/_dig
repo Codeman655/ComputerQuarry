@@ -1,5 +1,11 @@
 --digging library
---
+
+function dump()
+  for i=1,9 do
+    turtle.select(i)
+    turtle.drop()
+  end
+end
 
 function digLine(num)
   for i=1,num do
@@ -14,6 +20,7 @@ function digSquare(area)
       turtle.dig()
       turtle.forward()
     end
+
     if i%2 == 0 then
       turtle.turnRight()
       turtle.dig()

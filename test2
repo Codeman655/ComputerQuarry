@@ -1,0 +1,8 @@
+path=shell.resolveProgram("_gmove")
+if path==nil or not os.loadAPI(path) then
+  print ("Can\'t load library: _gmove")
+  return 1
+end
+
+rednet.open("right")
+_gmove.goto(31,-428, 1)
