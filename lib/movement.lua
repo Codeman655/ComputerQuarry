@@ -99,13 +99,13 @@ function faceEast(orientation)
 end
 function faceSouth(orientation) 
  while orientation~=3 do
-	  spinRight(orientation)
+	  orientation = spinRight(orientation)
  end
  return(orientation)
 end
 function faceWest(orientation) 
  while orientation~=4 do
-	  spinRight(orientation)
+	  orientation = spinRight(orientation)
  end
  return(orientation)
 end
@@ -183,7 +183,7 @@ function descend()
     turtle.down()
     --coord[2] = coord[2] - 1
   end
-  print("laneded")
+  print("landed")
   --writeCoord(coord)
 end
 

@@ -16,7 +16,7 @@ while true do
   if key == 28 then break end
 end
 print("Launching")
-end
+--end
 local set = {}
 set[1] = {x = 0,y = 3,z = 255}
 set[2] = {x = 3,y = 0,z = 252}

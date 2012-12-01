@@ -1,4 +1,4 @@
-path=shell.resolveProgram("_movement")
+path=shell.resolveProgram("_gmove")
 if path==nil or not os.loadAPI(path) then
   print ("Can\'t load library: _movement")
   return 1
@@ -12,10 +12,10 @@ home_x, home_y, home_z, orientation = coord[1],coord[2],coord[3],coord[4]
 dest_x=arg[1]
 dest_z=arg[2]
 
-_move.goto(dest_x, dest_z)
+_gmove.goto(dest_x, dest_z)
 shell.run("excavate", area)
-_move.goto(home_x, home_z)
-_move.faceNorth()
+_gmove.goto(home_x, home_z)
+_gmove.faceNorth()
 for i=1,9 do
   turtle.select(i)
   turtle.drop()
